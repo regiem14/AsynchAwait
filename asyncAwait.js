@@ -12,10 +12,12 @@ const posts =[
 function getPosts(){
     setTimeout(()=>{
         let output = '';
-        posts.forEach((post)=>{
+        posts.forEach((post, index)=>{
             output += `
             <ul class='ordered--left'>
                 <li>${post.title}</li>
+                <li>${post.body}</li>
+
             </ul>
             `;
         });
@@ -45,8 +47,26 @@ function createPost(post){
     });
 }
 
+const promise1 = Promise.resolve('I promise you, this is true!');
+const promise2 = 3000;
+const promise3 = 'times';
+const promise4 =new Promise((resolve,reject)=>
+    setTimeout(resolve, 2000, 'Forever! From Spidey')
+    );
 
-getPosts();
-createPost({title: 'Post three', body:'This is post three'}, getPosts);
+Promise.all([promise1,promise2, promise3,promise4]).then((values)=>console.log(values));
 
-console.log(getPosts());
+// getPosts();
+// createPost({title: 'Post three', body:'This is post three'}, getPosts);
+/*createPost({
+    title: 'Post three', 
+    body:'This is post three'
+}).then(getPosts);*/
+
+/*createPost({
+    title: 'Post three', 
+    body:'This is post three'
+}).then(getPosts).catch(error => console.log(err));
+*/
+
+// console.log(getPosts());
