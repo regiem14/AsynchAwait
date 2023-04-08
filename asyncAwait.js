@@ -74,7 +74,7 @@ Promise.all([promise1,promise2, promise3,promise4]).then((values)=>console.log(v
 // console.log(getPosts());
 
 
-function createPost(post){
+/*function createPost(post){
     return new Promise((fullfill, reject)=>{
         setTimeout(()=>{
             posts.push(post);
@@ -93,4 +93,15 @@ async function init(){
     getPosts();
 }
 
-init();
+init();*/
+
+
+
+async function fetchUserData(){
+    const res = await fetch('https://jsonplaceholder.typicode.com/users');
+
+    const data = await res.json();
+    console.log(data);
+}
+
+fetchUserData();
