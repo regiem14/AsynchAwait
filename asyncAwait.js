@@ -33,7 +33,7 @@ function getPosts(){
 }*/
 
 
-function createPost(post){
+/*function createPost(post){
     return new Promise((fullfill, reject)=>{
         setTimeout(()=>{
             posts.push(post);
@@ -45,9 +45,10 @@ function createPost(post){
             }
         },2000);
     });
-}
+}*/
 
-const promise1 = Promise.resolve('I promise you, this is true!');
+
+/*const promise1 = Promise.resolve('I promise you, this is true!');
 const promise2 = 3000;
 const promise3 = 'times';
 const promise4 =new Promise((resolve,reject)=>
@@ -55,6 +56,7 @@ const promise4 =new Promise((resolve,reject)=>
     );
 
 Promise.all([promise1,promise2, promise3,promise4]).then((values)=>console.log(values));
+*/
 
 // getPosts();
 // createPost({title: 'Post three', body:'This is post three'}, getPosts);
@@ -70,3 +72,25 @@ Promise.all([promise1,promise2, promise3,promise4]).then((values)=>console.log(v
 */
 
 // console.log(getPosts());
+
+
+function createPost(post){
+    return new Promise((fullfill, reject)=>{
+        setTimeout(()=>{
+            posts.push(post);
+            const error = false;
+            if(!error){
+                fullfill();
+            }else{
+                reject('Error: Something went wrong');
+            }
+        },2000);
+    });
+};
+
+async function init(){
+    await createPost({title:'Post three', body:'This is post three'});
+    getPosts();
+}
+
+init();
